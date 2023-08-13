@@ -1,9 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-const url = "http://localhost:4000/api";
+import { useDispatch } from 'react-redux';
+import { api } from '../config';
+const API_URL = api.API_URL;
+// const url = "http://localhost:4000/api";
 
 // const formData = {
 //   firstName:"", lastName:"", pob:"", dob:"", nID:""
@@ -31,7 +31,7 @@ const initialState = {
 // Define your async actions using createAsyncThunk
 export const fetchData = createAsyncThunk('districts/all', async (_,thunkAPI) => {
   try{
-    const response = await axios.get(url+"/districts/all");
+    const response = await axios.get(API_URL+"/districts/all");
     return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -42,7 +42,7 @@ export const fetchData = createAsyncThunk('districts/all', async (_,thunkAPI) =>
 // get single distinct
 export const getSingleDistrict = createAsyncThunk('districts/single', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/districts/single/${id}`);
+  const response = await axios.get(API_URL+`/districts/single/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -53,7 +53,7 @@ export const getSingleDistrict = createAsyncThunk('districts/single', async (id,
 // get selected district data
 export const getDistrictData = createAsyncThunk('districts/data', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/districts/single/${id}`);
+  const response = await axios.get(API_URL+`/districts/single/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -64,7 +64,7 @@ export const getDistrictData = createAsyncThunk('districts/data', async (id,thun
 // get selected district data
 export const getDistrictInfo = createAsyncThunk('districts/data/single', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/districts/state/single/data/info/${id}`);
+  const response = await axios.get(API_URL+`/districts/state/single/data/info/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -76,7 +76,7 @@ export const getDistrictInfo = createAsyncThunk('districts/data/single', async (
 // get the selected district working hours
 export const getDistrictWorkingHours = createAsyncThunk('districts/workingHours', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/workingHours/hours/single/${id}`);
+  const response = await axios.get(API_URL+`/workingHours/hours/single/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -87,7 +87,7 @@ export const getDistrictWorkingHours = createAsyncThunk('districts/workingHours'
 // get the un available date every district
 export const getUnavailableDates = createAsyncThunk('applicants/unavailable', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/applicants/date/unavailable/all/${id}`);
+  const response = await axios.get(API_URL+`/applicants/date/unavailable/all/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -98,7 +98,7 @@ export const getUnavailableDates = createAsyncThunk('applicants/unavailable', as
 // get the un available date every district
 export const getAvailableDates = createAsyncThunk('applicants/availableDates', async (data,thunkAPI) => {
   try{
-  const response = await axios.post(url+`/applicants/dates/availableTime/all`,data);
+  const response = await axios.post(API_URL+`/applicants/dates/availableTime/all`,data);
   return response.data;
   }catch (err) {
     // const message = (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
@@ -109,7 +109,7 @@ export const getAvailableDates = createAsyncThunk('applicants/availableDates', a
 // get national ID
 export const getNationalId = createAsyncThunk('profile/national', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/profile/person/${id}`);
+  const response = await axios.get(API_URL+`/profile/person/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);

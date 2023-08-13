@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-
-const url = "http://localhost:4000/api/applicants";
+import { api } from '../config';
+const API_URL = api.API_URL;
+// const url = "http://localhost:4000/api/applicants";
 
 // const formData = {
 //   firstName:"", lastName:"", pob:"", dob:"", nID:""
@@ -26,7 +27,7 @@ const initialState = {
 // Define your async actions using createAsyncThunk
 export const getApplicants = createAsyncThunk('applicants/all', async (_,thunkAPI) => {
   try{
-    const response = await axios.get(url+"/all");
+    const response = await axios.get(API_URL+"/applicants/all");
     return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -37,7 +38,7 @@ export const getApplicants = createAsyncThunk('applicants/all', async (_,thunkAP
 // get single applicant
 export const getSingleApplicant = createAsyncThunk('applicants/single', async (id,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/single/${id}`);
+  const response = await axios.get(API_URL+`/applicants/single/${id}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -46,7 +47,7 @@ export const getSingleApplicant = createAsyncThunk('applicants/single', async (i
 });
 export const getApplicantInfo = createAsyncThunk('applicants/view', async (appointmentNumber,thunkAPI) => {
   try{
-  const response = await axios.get(url+`/view/${appointmentNumber}`);
+  const response = await axios.get(API_URL+`/applicants/view/${appointmentNumber}`);
   return response.data;
   }catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
@@ -58,7 +59,7 @@ export const getApplicantInfo = createAsyncThunk('applicants/view', async (appoi
 export const addNewApplicant = createAsyncThunk('applicants/add', async (data,thunkAPI) => {
 
     try{
-      const response = await axios.post(url+'/add', data);
+      const response = await axios.post(API_URL+'/applicants/add', data);
       return response.data;
       
   }catch (error) {
@@ -72,7 +73,7 @@ export const addNewApplicant = createAsyncThunk('applicants/add', async (data,th
   // get single applicant
   export const updateApplicant = createAsyncThunk('applicants/update', async (data,thunkAPI) => {
       try{
-      const response = await axios.patch(url+`/update/${data.id}`);
+      const response = await axios.patch(API_URL+`/applicants/update/${data.id}`);
       return response.data;
       }catch (err) {
         return thunkAPI.rejectWithValue(err.response.data);
@@ -83,7 +84,7 @@ export const addNewApplicant = createAsyncThunk('applicants/add', async (data,th
   // get single applicant
   export const uploadImage = createAsyncThunk('applicants/upload', async (data,thunkAPI) => {
       try{
-      const response = await axios.post(url+`/upload`,data);
+      const response = await axios.post(API_URL+`/applicants/upload`,data);
       return response.data;
       }catch (err) {
         return thunkAPI.rejectWithValue(err.response.data);
@@ -95,7 +96,7 @@ export const addNewApplicant = createAsyncThunk('applicants/add', async (data,th
   // delete applicant
   export const deleteApplicant = createAsyncThunk('applicants/delete', async (id,thunkAPI) => {
       try{
-        const response =  await axios.delete(url+`/delete/${id}`);
+        const response =  await axios.delete(API_URL+`/applicants/delete/${id}`);
           return response.data;
   
   }catch (err) {
@@ -107,7 +108,7 @@ export const addNewApplicant = createAsyncThunk('applicants/add', async (data,th
 // check if its holyday
   export const checkIsHolyday = createAsyncThunk('holydays/single', async ({appointmentDate,id},thunkAPI) => {
     try{
-    const response = await axios.get(`http://localhost:4000/api/holydays/single/${appointmentDate}/${id}`);
+    const response = await axios.get(API_URL+`/holydays/single/${appointmentDate}/${id}`);
     console.log(response.data)
     return response.data;
     }catch (err) {
@@ -120,7 +121,7 @@ export const addNewApplicant = createAsyncThunk('applicants/add', async (data,th
     // update appointment
     export const updateAppointment = createAsyncThunk('appointment/update', async (data,thunkAPI) => {
       try{
-      const response = await axios.patch(url+`/update/appointment/${data.id}`,data);
+      const response = await axios.patch(API_URL+`/applicants/update/appointment/${data.id}`,data);
       return response.data;
       }catch (err) {
         return thunkAPI.rejectWithValue(err.response.data);
@@ -133,7 +134,7 @@ export const addNewApplicant = createAsyncThunk('applicants/add', async (data,th
     export const sendMessage = createAsyncThunk('applicants/message', async (data,thunkAPI) => {
 
       try{
-        const response = await axios.post(url+'/send/message', data);
+        const response = await axios.post(API_URL+'/applicants/send/message', data);
         return response.data;
         
     }catch (error) {
