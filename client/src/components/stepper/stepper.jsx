@@ -41,10 +41,10 @@ function MultiStepForm() {
   const [status1, setStatus] = useState("");
   const [pob, setPob] = useState("");
   const [occupation, setOccupation] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("061");
   const [email, setEmail] = useState("");
   const [emergencyContactName, setEmergencyContactName] = useState("");
-  const [emergencyContactNumber, setEmergencyContactNumber] = useState("");
+  const [emergencyContactNumber, setEmergencyContactNumber] = useState("061");
   const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [selectedState1, setSelectedState] = useState("");
@@ -75,7 +75,7 @@ function MultiStepForm() {
     phoneNumber: "",
     email: "",
     emergencyContactName: "",
-    emergencyContactNumber: "",
+    emergencyContactNumber:"",
     amount: "",
     type: "",
     districtId: "",
@@ -143,13 +143,14 @@ function MultiStepForm() {
       dispatch(fetchData());
     }
     if (isAppError) {
+      console.log("here---------------------------")
       toast.error(errorMessage?.message);
       // dispatch(appReset());
     }
-    if (isAppError) {
-      toast.error(appMessage?.message);
-      // dispatch(appReset());
-    }
+    // if (isAppError) {
+    //   toast.error(appMessage?.message);
+    //   // dispatch(appReset());
+    // }
     if (isAppSuccess) {
       toast.success(appMessage?.message);
       // dispatch(appReset());
@@ -385,9 +386,9 @@ function MultiStepForm() {
     // if (!nationalID || nationalID == undefined || nationalID == null) {
     //   toast.error(error.message);
     // }
-    if (appStatus == "failed" || status == "failed") {
+    if (appStatus == "failed") {
       console.log(isAppError);
-      toast.error("Please check all the requirements");
+      toast.error("please check all the requirements");
       return;
     }
    
@@ -397,12 +398,14 @@ function MultiStepForm() {
       (mFname == "" ||
         lName == "" ||
         fName == "" ||
-        nID == "" ||
+        
         mLname == "" ||
         selectedDate == "" ||
         pob == "" || status1 == "" || occupation == "")
     ) {
-      console.log(mFname, lName, fName, nID, selectedDate, pob);
+      // console.log("mother fname ",mFname, "lname ",lName, " fname ",fName, " nid ",nID, "dob ",selectedDate, " pob ",pob," stat ",status1," occ ",occupation);
+      console.log(nID)
+      console.log("----- personal info department")
       toast.error("please fill the required fields");
       return;
     }
@@ -413,7 +416,8 @@ function MultiStepForm() {
         emergencyContactNumber == "" ||
         phoneNumber == "")
     ) {
-      console.log(emergencyContactName, emergencyContactNumber, phoneNumber);
+      // console.log(emergencyContactName, emergencyContactNumber, phoneNumber);
+      console.log("----- contact department")
       toast.error("please fill the required fields");
       return;
     }
@@ -423,14 +427,29 @@ function MultiStepForm() {
       );
       return;
     }
+    if (step == 2 && (phoneNumber.length != 10 || emergencyContactNumber.length != 10)) {
+      toast.error(
+        "Phone number or contact number must be 10 numbers."
+      );
+      return;
+    }
     if (
       step === 4 &&
       (appointmentDate === undefined ||
         appointmentDate === "" ||
         selectedState1 === undefined ||
-        selectedState1 === "")
+        selectedState1 === "" || selectedTime == undefined || selectedTime === ""
+        )
     ) {
+      console.log(selectedState1,selectedTime,appointmentDate)
+      console.log("----- appointment department")
       toast.error("please fill the required fields");
+      return;
+    }
+    if(step === 4 && isAppError){
+      console.log("app error message")
+      console.log(appMessage)
+      toast.error(appMessage);
       return;
     }
     if (step === 4 && isChecked == false) {
@@ -526,7 +545,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-3 my-2 lg:col-span-2 lg:my-1 ">
                     <label
                       htmlFor="first-name"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       First name
                     </label>
                     <div className="">
@@ -546,7 +565,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-3 my-2 lg:col-span-2 lg:my-1">
                     <label
                       htmlFor="last-name"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       Last name
                     </label>
                     <div className="">
@@ -566,7 +585,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-3 my-2 lg:col-span-2  lg:my-1 ">
                     <label
                       htmlFor="first-name"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       MOTHER'S FIRST NAME
                     </label>
                     <div className="">
@@ -586,7 +605,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-3  lg:col-span-2 lg:my-1">
                     <label
                       htmlFor="mLname"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       MOTHER'S LAST NAME
                     </label>
                     <div className="">
@@ -606,7 +625,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-2 lg:col-span-2  my-2 lg:my-3">
                     <label
                       htmlFor="country"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       Gender
                     </label>
                     <div className="">
@@ -629,7 +648,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-2 lg:col-span-2">
                     <label
                       htmlFor="country"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       OCCUPATION
                     </label>
                     <div className="">
@@ -653,7 +672,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="country"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       MARITAL STATUS
                     </label>
                     <div className="">
@@ -676,7 +695,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="country"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       DATE OF BIRTH
                     </label>
 
@@ -701,7 +720,7 @@ function MultiStepForm() {
                   <div className="sm:col-span-2 mb-2 lg:my-1">
                     <label
                       htmlFor="pob"
-                      className="block text-sm font-medium leading-6 text-gray-900 d-none">
+                      className="block text-sm font-medium leading-6 text-white">
                       PLACE OF BIRTH
                     </label>
                     <div className="">
@@ -1090,30 +1109,33 @@ function MultiStepForm() {
         <span className="text-danger">{validationErrors.appointmentDate}</span>
       )} */}
                 </div>
-                {errorMessage?.status !== "success" && (
-                  <div className="mt-2 form-control disabled">
-                    {availableDates?.length === 0
-                      ? workingHours &&
-                        workingHours?.map((item) => (
-                          <div key={item.startTime} className="">
-                            <div className="form-group">
-                              <input
-                                type="radio"
-                                name="time"
-                                value={item.startTime}
-                                id={item.startTime}
-                                className="mx-2"
-                                checked={selectedTime === item.startTime}
-                                onChange={handleTimeChange}
-                              />
-                              <label htmlFor={item.startTime}>
-                                {item.startTime} ------- Available
-                              </label>
-                            </div>
+               {
+                appointmentDate && appStatus != "failed" && (
+                  <>
+                  {errorMessage?.status !== "success" && (
+                    <div className="mt-2 form-control disabled">
+                  {availableDates?.length === 0
+                    ? workingHours &&
+                      workingHours?.map((item) => (
+                        <div key={item.startTime} className="">
+                          <div className="form-group">
+                            <input
+                              type="radio"
+                              name="time"
+                              value={item.startTime}
+                              id={item.startTime}
+                              className="mx-2"
+                              checked={selectedTime === item.startTime}
+                              onChange={handleTimeChange}
+                            />
+                            <label htmlFor={item.startTime}>
+                              {item.startTime} ------- {item.endTime} Available
+                            </label>
                           </div>
-                        ))
-                      : availableDates?.map((info, i) => (
-                          <p key={info.time}>
+                        </div>
+                      ))
+                    : availableDates?.map((info, i) => (
+                      <p key={info.time}>
                             <input
                               type="radio"
                               name="time"
@@ -1128,7 +1150,7 @@ function MultiStepForm() {
                             {/* {availableDates[i + 1]
                             ? availableDates[i + 1].time
                             : "Next Hour"}
-                          ={" "} */}
+                          ={" "} */}==
                             <span>
                               {info.availableNumber == 0
                                 ? "FULL"
@@ -1140,6 +1162,9 @@ function MultiStepForm() {
                         ))}
                   </div>
                 )}
+                  </>
+                )
+               }
               </div>
             </div>
             {/* <div className="col">

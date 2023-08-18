@@ -11,7 +11,7 @@ module.exports = {
   
   
   
-    //   API_URL: "http://localhost:4000/api"
+      API_URL: "http://localhost:4000/api"
   
   
      // API_URL: "https://beasalm24.asalmedia.net/api/v1/",
@@ -24,7 +24,7 @@ module.exports = {
     //  API_URL: "https://asal24.tabaarak.net/api/v1/",
   
   
-       API_URL: "https://sopas.cyclic.app/api"
+      //  API_URL: "https://sopas.cyclic.app/api"
   
     },
   };
