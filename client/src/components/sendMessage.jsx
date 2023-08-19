@@ -128,7 +128,7 @@ function SendMessage() {
        {
         !applicantInfo || !applicantInfo?.districtId && (
           <>
-          <div className="col-span-2">
+          <div className="col-span-2" style={{height:"490px" }}>
                 {/* <label
                   htmlFor="nID"
                   className="block text-sm font-medium leading-6 text-gray-900">

@@ -484,7 +484,7 @@ function MultiStepForm() {
 
       <HorizontalStepper isOpen={isOpen} />
       <div
-        style={{ display: isOpen == true ? "none" : "" }}
+        style={{ display: isOpen == true ? "none" : "", }}
         className="bg-cyan-900 w-100 h-100 py-10 text-white lg:px-12 ">
         <ToastContainer />
         {/* CONTACT INFORMATION */}
@@ -492,7 +492,7 @@ function MultiStepForm() {
           // personal information form
           <form onSubmit={handleNext} className=" shadow-2xl px-4 ">
             
-              <span style={{display:nationalID?.DOB ? "none":"block"}}>
+              <span style={{display:nationalID?.DOB ? "none":"block",  height:"587px" }}>
                 <div className="border-b border-gray-900/10 pb-6">
                   <h2 className="text-base font-extrabold leading-9 text-white">
                     NATIONAL IDENTITY AUTHENTICATION

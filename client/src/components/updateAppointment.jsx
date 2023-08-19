@@ -329,8 +329,8 @@ function UpdateAppointment() {
             </p>
 
             <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-6 m-0">
-        
-        <div className="sm:col-span-4">
+        <span style={{height:"530px" }}>
+        <div className="sm:col-span-4 my-3" >
                 {/* <label
                   htmlFor="nID"
                   className="block text-sm font-medium leading-6 text-gray-900">
@@ -358,7 +358,7 @@ function UpdateAppointment() {
                   GET
                 </button>
               </div>
-              
+              </span>
               {applicantInfo && applicantInfo?.districtId && (
 
                 <>
