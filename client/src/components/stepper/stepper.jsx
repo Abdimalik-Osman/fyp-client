@@ -546,7 +546,7 @@ function MultiStepForm() {
                     <label
                       htmlFor="first-name"
                       className="block text-sm font-medium leading-6 text-white">
-                      First name
+                      FIRST NAME
                     </label>
                     <div className="">
                       <input
@@ -566,7 +566,7 @@ function MultiStepForm() {
                     <label
                       htmlFor="last-name"
                       className="block text-sm font-medium leading-6 text-white">
-                      Last name
+                      LAST NAME
                     </label>
                     <div className="">
                       <input
@@ -626,7 +626,7 @@ function MultiStepForm() {
                     <label
                       htmlFor="country"
                       className="block text-sm font-medium leading-6 text-white">
-                      Gender
+                      GENDER
                     </label>
                     <div className="">
                       <select
@@ -634,6 +634,8 @@ function MultiStepForm() {
                         name="selectedSex"
                         autoComplete=""
                         value={selectedSex}
+                        disabled
+                        
                         onChange={(e) => setSelectedSex(e.target.value)}
                         placeholder="Select Gender"
                         className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -729,6 +731,7 @@ function MultiStepForm() {
                         name="pob"
                         value={pob}
                         onChange={(e) => setPob(e.target.value)}
+                        disabled
                         placeholder="Place of Birth"
                         autoComplete="place of birth"
                         className="block w-full rounded-md border-1 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -1020,6 +1023,11 @@ function MultiStepForm() {
             {/* <div className="row"> */}
             <div className=" grid grid-cols-1 gap-x-10 gap-y-2 sm:grid-cols-6 m-0">
               <div className="sm:col-span-3">
+              <label
+                      htmlFor="state"
+                      className="block text-sm font-medium leading-6 text-white">
+                      STATE 
+                    </label>
                 <Select
                   className="block w-full rounded-md 3order-1 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   options={options}
@@ -1028,6 +1036,11 @@ function MultiStepForm() {
                 />
               </div>
               <div className="sm:col-span-3">
+              <label
+                      htmlFor="pob"
+                      className="block text-sm font-medium leading-6 text-white">
+                      SELECT BRANCH
+              </label>
                 <Select
                   className="block w-full rounded-md border-1 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   options={options2}
