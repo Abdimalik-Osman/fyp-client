@@ -626,7 +626,7 @@ function MultiStepForm() {
                     <label
                       htmlFor="country"
                       className="block text-sm font-medium leading-6 text-white">
-                      GENDER
+                      SEX
                     </label>
                     <div className="">
                       <select
@@ -637,9 +637,9 @@ function MultiStepForm() {
                         disabled
                         
                         onChange={(e) => setSelectedSex(e.target.value)}
-                        placeholder="Select Gender"
+                        placeholder="Select your Sex"
                         className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                        <option value={""}>Select Your Gender</option>
+                        <option value={""}>Select Your Sex</option>
                         <option value={"Male"}>Male</option>
                         <option value={"Female"}>Female</option>
                       </select>
@@ -1069,6 +1069,18 @@ function MultiStepForm() {
                           className="block w-full rounded-md border-1 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
+                      <div className="form-group">
+                        <label htmlFor="hourlySlots">
+                          Hourly Applicants Can Service
+                        </label>
+                        <input
+                          type="Number"
+                          name="hourlySlots"
+                          disabled
+                          value={item.hourlySlots}
+                          className="block w-full rounded-md border-1 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
                       <div className="form-group my-2">
                         <label htmlFor="office">Office Name</label>
                         <input
@@ -1142,7 +1154,7 @@ function MultiStepForm() {
                               onChange={handleTimeChange}
                             />
                             <label htmlFor={item.startTime}>
-                              {item.startTime} ------- {item.endTime} Available
+                              {item.startTime} ------- {item.endTime} All Available
                             </label>
                           </div>
                         </div>
@@ -1337,18 +1349,18 @@ function MultiStepForm() {
               {/* sex */}
               <div className="col-span-1 my-2 lg:col-span-1 lg:my-1">
                 <label
-                  htmlFor="gender"
+                  htmlFor="sex"
                   className="block text-sm font-medium leading-6 text-white">
-                  Gender
+                  SEX
                 </label>
                 <div className="">
                   <input
                     type="text"
-                    name="mLname"
+                    name="sex"
                     value={selectedSex}
                     // onChange={(e) => setMLname(e.target.value)}
                     disabled
-                    placeholder="gender"
+                    placeholder="Sex"
                     autoComplete="family-name"
                     className="block w-full rounded-md border-1 py-1 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
