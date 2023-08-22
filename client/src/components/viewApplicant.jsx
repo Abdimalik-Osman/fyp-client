@@ -192,7 +192,7 @@ const ViewApplicant = () => {
           <form className=" shadow-2xl px-4 " onSubmit={handleSubmit}>
           <div className="border-b border-gray-900/10 pb-6">
 
-            <h2 className="text-base font-extrabold leading-9 text-white">
+            <h2 className="text-base text-center font-extrabold leading-9 text-white">
               APPLICANT STATUS
             </h2>
             <div className="grid grid-cols-4 gap-2">
@@ -201,11 +201,11 @@ const ViewApplicant = () => {
         !applicantInfo || !applicantInfo?.districtId && (
           <>
           <div className="col-span-2" style={{height:"605px" }}>
-                {/* <label
+                <label
                   htmlFor="nID"
-                  className="block text-sm font-medium leading-6 text-gray-900">
-                  NATIONAL ID
-                </label> */}
+                  className="block text-sm font-medium leading-6 text-white">
+                  Appointment Number
+                </label>
                 <input
                   type="text"
                   name="appointmentNumber"
@@ -224,7 +224,7 @@ const ViewApplicant = () => {
                 <button
                   type="button"
                   onClick={handleClick}
-                  className="w-full sm:w-auto rounded-md bg-sky-500 w-100 py-2   text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
+                  className="w-full sm:w-auto rounded-md bg-sky-500 w-100 py-2   text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 mt-4">
                   GET
                 </button>
               </div>
