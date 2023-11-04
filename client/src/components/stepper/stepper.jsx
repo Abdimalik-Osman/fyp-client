@@ -456,24 +456,7 @@ function MultiStepForm() {
       toast.error("please check the checkbox if you agreed the terms");
       return;
     }
-    // if(step ===)
-    // // if (isChecked == true) {
-    // //   dispatch(checkIsHolyday(appointmentDate));
-    // //   if (errorMessage?.status === "fail" || errorMessage?.status == "fail") {
-    // //     toast.error(errorMessage?.message);
-    // //   }else{
-
-    // //    dispatch(addNewApplicant(data));
-    // //    if (errorMessage?.status === "fail" || errorMessage?.status == "fail") {
-    // //     toast.error(errorMessage?.message);
-    // //   }else{
-    // //     if (errorMessage?.status === "success" || errorMessage?.status == "success") {
-    // //       toast.success(errorMessage?.message);
-    // //     }
-    // //   }
-    // //   }
-    // //   return
-    // // }
+   
 
     setStep(step + 1);
   };
