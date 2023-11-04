@@ -744,12 +744,7 @@ function MultiStepForm() {
                 </div>
 
                 <div className="d-flex justify-content-center align-items-center">
-                  {/* <button
-                    type="button"
-                    onClick={handlePrevious}
-                    className="w-full sm:w-auto rounded-md bg-white w-25 py-2 my-4 text-sm font-semibold text-black shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
-                    Previous
-                  </button> */}
+                
                   <button
                     type="submit"
                     className="w-full sm:w-auto rounded-md bg-sky-500 w-25 py-2 mx-3 my-4 text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
